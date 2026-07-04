@@ -84,7 +84,11 @@ Twelve components pulled from 21st.dev and adapted to the token system in `compo
 
 **All pill CTAs go through shadcn `Button`** — variants `pill` / `pill-outline` / `pill-ghost` + sizes `pill` / `pill-sm` in `components/ui/button.tsx` (press feedback + explicit transition list baked in). Don't hand-roll CTA classNames anymore.
 
-Repo: https://github.com/ishaanpthegoat/premier-eye-institute (private, main). Testimonials are now NINE placeholders in lib/site.ts — still all placeholder, replace before launch.
+Repo: https://github.com/ishaanpthegoat/premier-eye-institute (now PUBLIC — user flipped it for Pages; key was never committed). Testimonials are now NINE placeholders in lib/site.ts — still all placeholder, replace before launch.
+
+## GitHub Pages preview (July 3 2026)
+
+Live at **https://ishaanpthegoat.github.io/premier-eye-institute/**. `next.config.ts` uses `output: "export"` + `basePath` from `NEXT_PUBLIC_BASE_PATH`; raw asset srcs (video, and the logo — **unoptimized next/image does NOT apply basePath**) go through `withBasePath()` from `lib/base-path.ts`. Deploy with **`npm run deploy:pages`** (`scripts/deploy-pages.mjs`: builds with the base path, force-pushes `out/` as a fresh single-commit `gh-pages` branch; Pages serves that branch in legacy mode). The gh CLI token lacks the `workflow` scope so an Actions workflow can't be pushed — run `gh auth refresh -s workflow` if CI deploys are ever wanted. GitHub's Pages builds ran slow (~10 min) that day; POSTing `repos/.../pages/builds` unsticks a stuck one. Real launch should still be a proper host/custom domain (peicare.com) — the base path only exists for the Pages subpath.
 
 ## Confirmed business facts (from client, July 3 2026)
 
