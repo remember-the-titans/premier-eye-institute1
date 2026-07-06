@@ -1,6 +1,6 @@
 # Premier Eye Institute — Session Handoff Context
 
-Paste-ready context for continuing work on this project. Everything below reflects the state as of July 3, 2026.
+**Last updated:** July 3, 2026 pm. All systems working. Live preview at https://ishaanpthegoat.github.io/premier-eye-institute/ — **if it ever shows the README instead of the site, run `npm run deploy:pages` to re-sync the live Pages branch.**
 
 ## What this is
 
@@ -100,12 +100,28 @@ Hours (already in `lib/site.ts`): Mon–Wed 8:00am–5:00pm, Thu 9:00am–6:00pm
 2. **Contact form simulates its send** (`components/contact/contact-form.tsx`) — wire to Formspree/Resend/practice email.
 3. **Staff/doctor photos** — "photo coming soon" gradient placeholders in doctor section + about page.
 4. Confirm full insurance list with client; PRD open questions (booking system embed?, blog?).
-5. Not committed to git — repo has only create-next-app's initial commit; user hasn't asked for commits.
-6. Deploy: `npx vercel` then `npx vercel --prod` (zero config).
+5. **Launch deploy:** Vercel (recommended, zero config; native Next.js) or a real domain instead of the GitHub Pages subpath. The Pages setup is a preview-only arrangement — when going live, remove `basePath` from next.config.ts and deploy to your own host.
 
-## User preferences observed
+## Deployment quick-start
+
+```bash
+# Live preview on GitHub Pages:
+npm run deploy:pages
+
+# Real launch on Vercel (recommended):
+npx vercel                    # staging
+npx vercel --prod             # production
+
+# Before launch, revert the Pages-only config:
+# 1. In next.config.ts, remove the basePath logic
+# 2. In components/home/video-hero.tsx and components/site/logo.tsx, replace withBasePath() with plain "/path"
+# 3. Then redeploy to your real host
+```
+
+## User preferences & learnings
 
 - Wants autonomous end-to-end execution; only ask when truly blocked.
-- Wants the full toolset used: shadcn MCP for components, chrome-devtools MCP for live verification (screenshots, perf traces, console), Magic MCP/21st.dev for flashy components, taste-skill + impeccable + web-interface-guidelines as quality gates.
-- Do not invent facts (no fake reviews passed as real, no invented services); flag placeholders explicitly.
-- Aesthetic: premium/calm/warm, "ultra cool" motion, but never blocking the booking flow.
+- Full toolset approach: shadcn for components, chrome-devtools for verification, 21st.dev for reference, Emil Kowalski pass for motion.
+- Premium/calm/warm aesthetic, "ultra cool" motion, but never blocking the booking flow.
+- **Deploy-Pages gotcha:** GitHub Pages doesn't build Next.js. The site lives in the `gh-pages` branch (force-pushed by `npm run deploy:pages`), and it takes ~10 minutes to propagate. If it ever reverts to README, the build queue got stuck — POST to `/pages/builds` to kick a fresh build request, or re-run the deploy script.
+- **The 21st.dev API key in `.mcp.json`** is gitignored and safe (never committed). The Magic MCP loses its key when a session launches from the Desktop cwd — work around by calling the API directly with the key from `.mcp.json`.
