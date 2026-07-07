@@ -42,3 +42,6 @@ next-env.d.ts
 
 # contains the 21st.dev API key
 .mcp.json
+
+# local Claude Code settings
+.claude/settings.local.json

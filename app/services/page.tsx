@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Phone } from "lucide-react";
+import { ArrowRight, Phone } from "lucide-react";
 import { PageHero } from "@/components/site/page-hero";
 import { CtaBand } from "@/components/site/cta-band";
 import { Reveal } from "@/components/motion/reveal";
@@ -42,12 +42,17 @@ export default function ServicesPage() {
                   </span>
                   <div>
                     <h2 className="font-heading text-[26px] font-semibold leading-tight text-ink">
-                      {s.title}
+                      <Link
+                        href={`/services/${s.slug}`}
+                        className="transition-colors duration-200 hover:text-accent"
+                      >
+                        {s.title}
+                      </Link>
                     </h2>
                     <p className="mt-2.5 max-w-[600px] text-[15px] leading-[1.65] text-body-text">
                       {s.long}
                     </p>
-                    <div className="mt-5 flex flex-wrap gap-3">
+                    <div className="mt-5 flex flex-wrap items-center gap-3">
                       <Button asChild variant="pill" size="pill-sm" className="min-h-10 px-5 text-[13.5px]">
                         <Link href="/book">Book this service</Link>
                       </Button>
@@ -57,6 +62,16 @@ export default function ServicesPage() {
                           Ask us about it
                         </a>
                       </Button>
+                      <Link
+                        href={`/services/${s.slug}`}
+                        className="group/story inline-flex items-center gap-1.5 px-1 text-[13.5px] font-semibold text-accent-hover transition-colors duration-200 hover:text-accent"
+                      >
+                        See how your visit goes
+                        <ArrowRight
+                          className="size-3.5 transition-transform duration-200 ease-[var(--ease-out-strong)] group-hover/story:translate-x-0.5"
+                          aria-hidden="true"
+                        />
+                      </Link>
                     </div>
                   </div>
                 </div>

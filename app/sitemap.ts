@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { journeys } from "@/lib/services-journeys";
 
 // Required for output: "export" — metadata routes must opt into static.
 export const dynamic = "force-static";
@@ -10,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/about",
     "/services",
+    ...journeys.map((j) => `/services/${j.slug}`),
     "/eyewear",
     "/reviews",
     "/payments-insurance",

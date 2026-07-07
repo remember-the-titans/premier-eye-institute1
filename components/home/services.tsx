@@ -37,7 +37,7 @@ export function Services() {
           >
             <SpotlightCard className="h-full rounded-lg">
               <Link
-                href={`/services#${s.slug}`}
+                href={`/services/${s.slug}`}
                 className="group flex h-full flex-col rounded-lg border border-ink/[0.08] bg-surface p-7 pb-8 transition-[transform,translate,border-color,box-shadow] duration-[400ms] ease-[var(--ease-soft)] hover:-translate-y-1 hover:border-ink/[0.14] hover:shadow-warm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
                 <span className="mb-5 inline-flex size-[46px] items-center justify-center rounded-[13px] bg-accent-tint text-accent">
@@ -50,8 +50,8 @@ export function Services() {
                   {s.short}
                 </p>
                 <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-[13.5px] font-semibold text-accent opacity-0 transition-opacity duration-250 group-hover:opacity-100 group-focus-visible:opacity-100">
-                  Learn more
-                  <ArrowRight className="size-3.5" aria-hidden="true" />
+                  See how the visit goes
+                  <ArrowRight className="size-3.5 transition-transform duration-200 ease-[var(--ease-out-strong)] group-hover:translate-x-0.5" aria-hidden="true" />
                 </span>
               </Link>
             </SpotlightCard>
