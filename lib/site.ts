@@ -208,7 +208,7 @@ export const testimonials = [
 export const stats = [
   { value: 5000, suffix: "+", label: "Eyes examined" },
   { value: 10, suffix: "+", label: "Years in Creedmoor" },
-  { value: 4.9, decimals: 1, label: "Average star rating" },
+  { value: 4.8, decimals: 1, label: "Average star rating" },
   { value: 100, suffix: "%", label: "Independent & local" },
 ] as const;
 
