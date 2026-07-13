@@ -168,6 +168,28 @@
   }
 }
 
+/* Gentle independent bob for the homepage hero instruments. Per-element
+   tempo comes from --bob-dur / --bob-delay so the three never sync up. The
+   animation lives on the (multiply-blended) <img> itself — putting it on a
+   wrapper would create a stacking context and un-blend the art. Only runs
+   when the visitor hasn't asked for reduced motion. */
+@keyframes pei-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-float {
+    animation: pei-bob var(--bob-dur, 6s) ease-in-out var(--bob-delay, 0s)
+      infinite;
+  }
+}
+
 @layer components {
   .font-heading {
     font-family: var(--font-newsreader), Georgia, serif;
