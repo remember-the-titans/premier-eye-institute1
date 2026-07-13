@@ -168,25 +168,24 @@
   }
 }
 
-/* Gentle independent bob for the homepage hero instruments. Per-element
-   tempo comes from --bob-dur / --bob-delay so the three never sync up. The
-   animation lives on the (multiply-blended) <img> itself — putting it on a
-   wrapper would create a stacking context and un-blend the art. Only runs
-   when the visitor hasn't asked for reduced motion. */
-@keyframes pei-bob {
+/* Gentle continuous turn for the homepage hero glasses. An orthographic
+   rotateY (no perspective — perspective on an ancestor would make a stacking
+   context and un-blend the art), so the frames read as slowly rotating. The
+   transform lives on the (multiply-blended) <img> itself. Reduced motion
+   leaves the glasses still. */
+@keyframes pei-rotate-y {
   0%,
   100% {
-    transform: translateY(0);
+    transform: rotateY(-32deg);
   }
   50% {
-    transform: translateY(-9px);
+    transform: rotateY(32deg);
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .hero-float {
-    animation: pei-bob var(--bob-dur, 6s) ease-in-out var(--bob-delay, 0s)
-      infinite;
+  .hero-spin {
+    animation: pei-rotate-y 5.5s ease-in-out infinite;
   }
 }
 
