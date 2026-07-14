@@ -168,29 +168,8 @@
   }
 }
 
-/* One-time turntable spin for the homepage hero glasses. A full rotateY turn
-   around the vertical axis (front → edge → back → around to front), so you
-   actually see the back of the frames swing past. Perspective is a transform
-   *function* on the (multiply-blended) <img> itself — never the `perspective`
-   property on an ancestor, which would isolate the blend and bring back the
-   white photo box. It commits to the FULL 360° once (not a back-and-forth
-   partial, which just tips in and out and reads as a squish), then holds on
-   the front. Reduced motion leaves the glasses still. */
-@keyframes pei-spin {
-  from {
-    transform: perspective(1100px) rotateY(0deg);
-  }
-  to {
-    transform: perspective(1100px) rotateY(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .hero-spin {
-    transform: perspective(1100px) rotateY(0deg);
-    animation: pei-spin 1.5s cubic-bezier(0.6, 0, 0.3, 1) 0.4s 1 both;
-  }
-}
+/* (The homepage hero glasses now spin as the real 3D model in
+   components/home/hero-glasses.tsx — no CSS transform hack needed.) */
 
 @layer components {
   .font-heading {

@@ -1,12 +1,33 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { withBasePath } from "@/lib/base-path";
 import { site } from "@/lib/site";
+
+/* The glasses are the real 3D model (glasses.glb) turning in real space.
+   Client-only (WebGL can't SSR); until it hydrates, the settled still shows —
+   which also gives us the LCP image and the no-JS fallback. */
+const HeroGlasses = dynamic(() => import("./hero-glasses"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex w-[min(80vw,360px)] justify-center">
+      <Image
+        src={withBasePath("/hero-fallback/glasses.webp")}
+        alt="A pair of black-framed glasses with a warm orange accent line"
+        width={900}
+        height={900}
+        priority
+        className="w-[min(80vw,360px)]"
+        style={ART_STYLE}
+      />
+    </div>
+  ),
+});
 
 /* The homepage hero — normal-scroll, one instrument per section.
 
@@ -243,20 +264,12 @@ export function VideoHero() {
       <HeroCta className="mt-9" />
 
       <div className="mx-auto mt-20 flex max-w-2xl flex-col items-center gap-28 sm:gap-36">
-        {/* 1 · Eyewear — the glasses, gently rotating. */}
+        {/* 1 · Eyewear — the real 3D glasses, one turntable spin on view. */}
         <Link
           href="/eyewear"
           className="group/beat flex flex-col items-center"
         >
-          <Image
-            src={withBasePath("/hero-fallback/glasses.webp")}
-            alt="A pair of black-framed glasses with a warm orange accent line"
-            width={900}
-            height={900}
-            priority
-            className="hero-spin w-[min(80vw,360px)]"
-            style={ART_STYLE}
-          />
+          <HeroGlasses />
           <Caption
             beat={{
               eyebrow: "01 · Eyewear",
