@@ -168,25 +168,24 @@
   }
 }
 
-/* Gentle continuous turn for the homepage hero glasses. The perspective is a
-   transform *function* on the (multiply-blended) <img> itself — NOT the
-   `perspective` property on an ancestor, which would spawn a stacking context
-   and un-blend the art. Applied this way it gives a real 3D turn (the far
-   temple recedes, the near one swings forward) instead of a flat orthographic
-   squish that reads as a wobble, not a spin. Reduced motion leaves it still. */
-@keyframes pei-rotate-y {
-  0%,
-  100% {
-    transform: perspective(900px) rotateY(-34deg);
+/* Continuous in-plane spin for the homepage hero glasses. A flat 2D rotate
+   (Z axis) — no perspective, no rotateY — so the glasses just turn around
+   their centre at constant size: never squishing, never tipping into depth.
+   Linear timing keeps the speed even (no ease-in/out pulse). The transform
+   lives on the (multiply-blended) <img> itself, no ancestor touched, so the
+   blend stays intact. Reduced motion leaves the glasses still. */
+@keyframes pei-spin {
+  from {
+    transform: rotate(0deg);
   }
-  50% {
-    transform: perspective(900px) rotateY(34deg);
+  to {
+    transform: rotate(360deg);
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .hero-spin {
-    animation: pei-rotate-y 5.5s ease-in-out infinite;
+    animation: pei-spin 14s linear infinite;
   }
 }
 
