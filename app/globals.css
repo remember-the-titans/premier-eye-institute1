@@ -168,8 +168,26 @@
   }
 }
 
-/* (The homepage hero glasses now spin as the real 3D model in
-   components/home/hero-glasses.tsx — no CSS transform hack needed.) */
+/* Gentle continuous turn for the homepage hero glasses. An orthographic
+   rotateY (no perspective — perspective on an ancestor would make a stacking
+   context and un-blend the art), so the frames read as slowly rotating. The
+   transform lives on the (multiply-blended) <img> itself. Reduced motion
+   leaves the glasses still. */
+@keyframes pei-rotate-y {
+  0%,
+  100% {
+    transform: rotateY(-32deg);
+  }
+  50% {
+    transform: rotateY(32deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-spin {
+    animation: pei-rotate-y 5.5s ease-in-out infinite;
+  }
+}
 
 @layer components {
   .font-heading {
