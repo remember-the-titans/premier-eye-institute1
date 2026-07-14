@@ -168,24 +168,30 @@
   }
 }
 
-/* Gentle continuous turn for the homepage hero glasses. An orthographic
-   rotateY (no perspective — perspective on an ancestor would make a stacking
-   context and un-blend the art), so the frames read as slowly rotating. The
-   transform lives on the (multiply-blended) <img> itself. Reduced motion
-   leaves the glasses still. */
+/* One gentle sway for the homepage hero glasses, then it stops facing front.
+   An orthographic rotateY (no perspective — perspective on an ancestor would
+   make a stacking context and un-blend the art). Starts and ends centered
+   (rotateY 0) so a single pass settles flat with no snap; runs once and holds
+   (forwards). The transform lives on the (multiply-blended) <img> itself.
+   Reduced motion leaves the glasses still. */
 @keyframes pei-rotate-y {
-  0%,
-  100% {
+  0% {
+    transform: rotateY(0deg);
+  }
+  25% {
     transform: rotateY(-32deg);
   }
-  50% {
+  75% {
     transform: rotateY(32deg);
+  }
+  100% {
+    transform: rotateY(0deg);
   }
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .hero-spin {
-    animation: pei-rotate-y 5.5s ease-in-out infinite;
+    animation: pei-rotate-y 5.5s ease-in-out 1 forwards;
   }
 }
 
