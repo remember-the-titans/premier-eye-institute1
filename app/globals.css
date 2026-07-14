@@ -168,18 +168,19 @@
   }
 }
 
-/* Gentle continuous turn for the homepage hero glasses. An orthographic
-   rotateY (no perspective — perspective on an ancestor would make a stacking
-   context and un-blend the art), so the frames read as slowly rotating. The
-   transform lives on the (multiply-blended) <img> itself. Reduced motion
-   leaves the glasses still. */
+/* Gentle continuous turn for the homepage hero glasses. The perspective is a
+   transform *function* on the (multiply-blended) <img> itself — NOT the
+   `perspective` property on an ancestor, which would spawn a stacking context
+   and un-blend the art. Applied this way it gives a real 3D turn (the far
+   temple recedes, the near one swings forward) instead of a flat orthographic
+   squish that reads as a wobble, not a spin. Reduced motion leaves it still. */
 @keyframes pei-rotate-y {
   0%,
   100% {
-    transform: rotateY(-32deg);
+    transform: perspective(900px) rotateY(-34deg);
   }
   50% {
-    transform: rotateY(32deg);
+    transform: perspective(900px) rotateY(34deg);
   }
 }
 
