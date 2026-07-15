@@ -4,7 +4,7 @@ import { PageHero } from "@/components/site/page-hero";
 import { CtaBand } from "@/components/site/cta-band";
 import { Reveal } from "@/components/motion/reveal";
 import { Button } from "@/components/ui/button";
-import { TestimonialsColumn } from "@/components/ui/testimonials-column";
+import { TestimonialCard } from "@/components/ui/testimonials-column";
 import { testimonials, site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -28,28 +28,12 @@ export default function ReviewsPage() {
       />
 
       <section className="mx-auto max-w-[1000px] px-5 pb-24 sm:px-8">
-        {/* 21st.dev testimonial columns; the full list is repeated for
-            screen readers below. */}
-        <Reveal className="flex justify-center gap-5 overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] max-h-[720px]">
-          <TestimonialsColumn testimonials={testimonials.slice(0, 3)} duration={20} />
-          <TestimonialsColumn
-            testimonials={testimonials.slice(3, 6)}
-            duration={26}
-            className="hidden md:block"
-          />
-          <TestimonialsColumn
-            testimonials={testimonials.slice(6, 9)}
-            duration={22}
-            className="hidden lg:block"
-          />
-        </Reveal>
-        <ul className="sr-only">
+        {/* Static grid — every review, all at once, nothing scrolling. */}
+        <Reveal className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t) => (
-            <li key={t.name}>
-              {t.name}, {t.detail}: {t.quote}
-            </li>
+            <TestimonialCard key={t.name} t={t} />
           ))}
-        </ul>
+        </Reveal>
 
         <Reveal delay={0.15} className="mt-12">
           <div className="rounded-lg border border-ink/[0.07] bg-surface-alt p-8 text-center sm:p-10">
