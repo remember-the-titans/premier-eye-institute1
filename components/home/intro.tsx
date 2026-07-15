@@ -9,13 +9,13 @@ export function Intro() {
     <section className="relative mx-auto max-w-[1000px] px-5 py-24 sm:px-8 md:py-36">
       <div
         aria-hidden="true"
-        className="font-heading pointer-events-none absolute right-2 top-1/2 hidden -translate-y-1/2 select-none flex-col items-center gap-3 text-center leading-none text-ink/[0.07] lg:flex"
+        className="font-heading pointer-events-none absolute right-2 top-1/2 hidden -translate-y-1/2 select-none flex-col items-center gap-3 text-center leading-none text-ink/[0.16] lg:flex"
       >
         <span className="text-7xl">{SNELLEN[0]}</span>
         <span className="text-5xl tracking-[0.3em]">{SNELLEN[1]}</span>
         <span className="text-3xl tracking-[0.35em]">{SNELLEN[2]}</span>
         <span className="text-xl tracking-[0.4em]">{SNELLEN[3]}</span>
-        <span className="mt-1 h-px w-16 bg-ink/10" />
+        <span className="mt-1 h-px w-16 bg-ink/20" />
         <span className="font-sans text-[10px] uppercase tracking-[3px]">
           20 / 20
         </span>
