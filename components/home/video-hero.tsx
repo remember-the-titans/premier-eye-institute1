@@ -261,9 +261,9 @@ export function VideoHero() {
             beat={{
               eyebrow: "01 · Eyewear",
               title: "Frames worth wearing",
-              copy: "Browse the optical, then try frames on with your camera.",
+              copy: "Browse the optical and find frames worth wearing.",
               href: "/eyewear",
-              linkLabel: "Try them on",
+              linkLabel: "Browse eyewear",
             }}
           />
         </Link>
