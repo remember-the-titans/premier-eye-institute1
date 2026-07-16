@@ -15,7 +15,7 @@ export function Services() {
         <div>
           <p className="eyebrow mb-3.5">What we do</p>
           <h2 className="font-heading text-[clamp(30px,4.4vw,52px)] font-medium leading-[1.05] tracking-[-0.5px] text-ink">
-            Care for every kind of eye.
+            Exceptional eyecare for all.
           </h2>
         </div>
         <Link

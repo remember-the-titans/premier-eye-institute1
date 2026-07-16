@@ -323,8 +323,8 @@ function HeroCopy() {
         {site.tagline}
       </p>
       <h1 className="font-heading motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-5 mt-4 text-[clamp(38px,5.6vw,72px)] font-medium leading-[1.02] tracking-[-0.5px] text-ink fill-mode-both duration-1000 [animation-delay:220ms]">
-        Eye care that{" "}
-        <em className="italic text-accent">isn&apos;t rushed</em>.
+        Eyecare{" "}
+        <em className="italic text-accent">personalized for you</em>.
       </h1>
       <p className="motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-4 mt-4 max-w-[500px] text-[clamp(15px,1.5vw,17px)] leading-relaxed text-body-text fill-mode-both duration-1000 [animation-delay:340ms]">
         Thorough exams, honest advice, and glasses you&apos;ll actually like.
